@@ -1,0 +1,87 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+body{
+    margin: 0;
+    background: #eee;
+}
+.wrap {
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    width: 100%;
+    text-align: center;
+}
+.top{
+    width: 45%;
+    height: max-content;
+    margin: 10px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.right {
+    margin-left: auto;
+}
+.saleMeter {
+    text-align: center;
+    margin: auto 110px;
+    font-weight: bold;
+}
+.saleMeter h1{
+    display: inline-block;
+    padding: 15px;
+}
+.saleMeter button h1{
+    display: inline-block;
+}
+.changePrice {
+    cursor: pointer;
+}
+form {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+}
+label {
+    color: #aaa;
+    display: inline-block;
+    margin: 25px 0 15px;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+input, select {
+    display: block;
+    padding: 10px 6px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+}
+button{
+    background: #0b6dff;
+    border: 0;
+    padding: 10px 20px;
+    margin: 20px 5px;
+    color: white;
+    border-radius: 20px;
+}
+li{
+    list-style-type: none;
+    background: rgb(204, 204, 204);
+    margin: 20px auto;
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.clicked {
+    background: rgb(226, 54, 54);
+    color: white;
+}

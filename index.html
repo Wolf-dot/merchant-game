@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Merchant Shop</title>
+</head>
+<body>
+    <!-- so you have cheat windows top left where you input your charm stats 
+    on the top left you can toggle dark mode
+    in the middle you have a shopping window
+    in the shopping window you can choose an item
+    see it's price
+    choose how much you want to pay for it
+    and roll your charm at the shopkeep-->
+    <div id="app">
+        <div class="wrap">
+            <div class="top">
+                <h3>Coins {{coins}}</h3>
+                <label>Charm {{ charm }}%</label>
+                <!-- <input type="number" name="charm" id="charm" v-model='charm'> --> 
+            </div>
+            <form>
+                <h1>{{ title }},</h1>
+                <h2>what will it be?</h2>
+                <div class="shoppingWindow">
+                    <select name="selectItem" id="selectItem" v-model="item">
+                        <option v-for="item in items" :value="item.id" :key="item.id"> {{ item.name }} </option>
+                    </select>
+
+                    <div class="item">
+                        <h1>Price: {{ items[item].price }} copper coins.</h1>
+                    </div>
+
+                    <div class="saleMeter">
+                        <button type="button" class="changePrice" @click='myPrice -= 10'>- 10</button>
+                        <button type="button" class="changePrice" @click='myPrice--'>-</button>
+                        <h1>{{myPrice}}</h1>
+                        <button type="button" class="changePrice" @click='myPrice++'>+</button>
+                        <button type="button" class="changePrice" @click='myPrice += 10'>+ 10</button></br>
+                        <button type="button" @click="haggle" :disabled="result">Haggle!</button>
+                    </div>
+
+                    
+
+                    <div v-if="result" class="result">
+                        <h2>{{ result }}</h2>
+                        <button type="button" @click="again">Again!</button>
+                    </div>
+                    <div v-if="error.is" class="error">
+                        <h2>{{ error.message }}</h2>
+                        <button type="button" @click="error = false">OK</button>
+                    </div>
+
+                </div>            
+            </form>
+            <div class="top right">
+                <label>your items</label>
+                <ul id="myitems">                                       
+                    <li class="item" v-for="(itm, index) in myitems" :key="index" @click="highlight" :id="index">{{ itm.name }} {{ itm.price }}</li>
+                </ul>
+                <div v-if="selling.is">
+                    <label>Price</label>
+                    <input type="number" v-model="sellingPrice">
+                    <button type="button" :disabled="result" @click="sell">Sell</button>
+                </div>
+            </div>            
+        </div>
+
+
+
+
+    </div>
+</body>    
+<script src="app.js"></script>
+</html>
