@@ -35,16 +35,15 @@ const app = Vue.createApp({
                     console.log(difficulty + ' = difficulty, ' + rnd + ' rnd, ' + charmModified + ' charmmodified')
                     if(charmModified > difficulty){
                         let transaction = this.subtractCoins(this.myPrice)
-                        console.log('what1')
-
                         if(transaction){
-                            console.log('what2')
                             this.myitems.push(this.items[this.item])
+                            this.charm += Math.ceil(diff / 100)
                             this.result = `SOLD for ${this.myPrice}, \n
                             you saved ${diff} coins`
                         }
                     }else{
                         this.result = `attempt FAILED, try again`
+                        this.charm -= Math.ceil(diff / 100)
                     }
                 }else{
                     let transaction = this.subtractCoins(this.myPrice)
@@ -83,8 +82,6 @@ const app = Vue.createApp({
                 let rnd = Math.random() * 10 + 1
                 let charmModified = rnd + rnd * this.charm / 100
                 console.log(`diff ${diff}, ogprice ${ogPrice}, difficulty ${difficulty}, charmmodified ${charmModified}`)
-                //console.log(difficulty + ' = difficulty, ' + rnd + ' rnd, ' + charmModified + ' charmmodified')
-
                 if(charmModified > difficulty){
                     this.result = `SOLD for ${this.sellingPrice}, \n
                     you saved ${diff} coins`
@@ -92,14 +89,16 @@ const app = Vue.createApp({
                     this.myitems.splice(index, 1)
                     this.coins += parseInt(this.sellingPrice)
                     this.sellingPrice = 0
-                    this.charm += diff / 100
-                    console.log(`charm increased by ${diff/100}`)
+                    this.charm += Math.ceil(diff / 100)
+                    this.selling.is = false
                 }else{
                     this.result = `attempt FAILED, try again`
+                    this.charm -= Math.ceil(diff / 100)
                 }
             }else if(diff === 0){
                 this.result = `SOLD for ${this.myPrice}`
                 this.coins += this.myPrice
+                this.selling.is = false
             }
         },
         subtractCoins(amount){
