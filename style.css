@@ -11,22 +11,18 @@ body{
     background: #eee;
 }
 .wrap {
-    display: grid;
-    grid-template-columns: 30% 40% 30%;
-    width: 100%;
+    display: flex;
     text-align: center;
 }
 .top{
-    width: 45%;
+    width: 20%;
     height: max-content;
-    margin: 10px;
+    margin: 0px 10px;
     padding: 15px;
     background-color: #ffffff;
     border-radius: 10px;
 }
-.right {
-    margin-left: auto;
-}
+
 .saleMeter {
     text-align: center;
     margin: auto 110px;
@@ -43,6 +39,7 @@ body{
     cursor: pointer;
 }
 form {
+    width: 60%;
     background: white;
     padding: 40px;
     border-radius: 10px;
@@ -84,4 +81,17 @@ li{
 .clicked {
     background: rgb(226, 54, 54);
     color: white;
+}
+
+@media (max-width: 800px) {
+    .wrap{
+        flex-direction: column;
+    }
+    .top{
+        width: auto;
+    }
+    form {
+        width: auto;
+        margin: 10px;
+    }
 }
